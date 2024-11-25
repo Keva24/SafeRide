@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Login Container */
+    .login-container {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo img {
+      width: 50px;
+      margin-bottom: 20px;
+    }
+
+    /* Heading */
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    /* Input Fields */
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      background-color: #e6e6e6;
+      border-radius: 20px;
+      padding: 10px;
+      margin-top: 5px;
+    }
+
+    .input-group .icon {
+      margin-right: 10px;
+    }
+
+    .input-group .icon img {
+      width: 20px;
+    }
+
+    .input-group input {
+      border: none;
+      background: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+    }
+
+    /* Forgot Password */
+    .forgot-password {
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .forgot-password a {
+      color: black;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    /* Login Button */
+    .login-btn {
+      background-color: #008000;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .login-btn:hover {
+      background-color: #005500;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="car-logo.png" alt="Car Logo"> <!-- Replace with your logo path -->
+    </div>
+    <!-- Login Form -->
+    <h1>Login</h1>
+    <form id="login-form">
+      <!-- Username Field -->
+      <label for="username">Username</label>
+      <div class="input-group">
+        <span class="icon"><img src="user-icon.png" alt="User"></span>
+        <input type="text" id="username" placeholder="Type your username" required>
+      </div>
+
+      <!-- Password Field -->
+      <label for="password">Password</label>
+      <div class="input-group">
+        <span class="icon"><img src="lock-icon.png" alt="Lock"></span>
+        <input type="password" id="password" placeholder="Type your password" required>
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="forgot-password">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent page reload on form submission
+
+      // Get form data
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Simple validation
+      if (username === "" || password === "") {
+        alert("Please fill in both fields!");
+        return;
+      }
+
+      // Placeholder for login logic
+      alert(`Welcome, ${username}! Login successful.`);
+    });
+  </script>
+</body>
+</html>

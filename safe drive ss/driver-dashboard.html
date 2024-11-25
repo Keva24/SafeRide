@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regional Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-panel {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+        }
+
+        .user-details {
+            margin-top: 20px;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .action-buttons button {
+            width: 90%;
+            margin-bottom: 10px;
+            padding: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ccc;
+            font-size: 14px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .action-buttons button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .right-panel {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .right-panel h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .chart-container {
+            width: 80%;
+            height: auto;
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        Driver Dashboard
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="logo">
+                <img src="car-logo.png" alt="Car Logo">
+            </div>
+            <div class="user-details">
+                <p><strong>Driver Name:</strong> Mugabo Kevia</p>
+                <p><strong>Telephone:</strong> +250786490020</p>
+                <p><strong>Driver ID:</strong> XXXXXX</p>
+            </div>
+            <div class="action-buttons">
+                <button id="bookingsBtn">Client's Bookings <span>&#128276;</span></button>
+                <button id="passwordBtn">Password Settings <span>&#128274;</span></button>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <h2>Monthly Performance</h2>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Chart Rendering (Using Chart.js)
+        document.addEventListener("DOMContentLoaded", () => {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Completed Rides', 'Cancelled Rides', 'Pending Rides', 'Customer Feedback'],
+                    datasets: [{
+                        data: [42, 11, 5, 42],
+                        backgroundColor: ['#f44336', '#2196f3', '#ffeb3b', '#4caf50'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                    },
+                }
+            });
+
+            // Interactivity with buttons
+            document.getElementById("bookingsBtn").addEventListener("click", () => {
+                alert("Redirecting to Client's Bookings...");
+            });
+
+            document.getElementById("passwordBtn").addEventListener("click", () => {
+                alert("Redirecting to Password Settings...");
+            });
+        });
+    </script>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

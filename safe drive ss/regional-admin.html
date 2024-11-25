@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regional Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-panel {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+        }
+
+        .user-details {
+            margin-top: 20px;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .action-buttons button {
+            width: 90%;
+            margin-bottom: 10px;
+            padding: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ccc;
+            font-size: 14px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .action-buttons button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .right-panel {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .right-panel h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .chart-container {
+            background-color: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chart-container canvas {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="logo">
+                <img src="car-logo.png" alt="Car Logo">
+            </div>
+            <div class="user-details">
+                <p><strong>Admin Name:</strong> Jane Doe</p>
+                <p><strong>Telephone:</strong> +123456789</p>
+                <p><strong>Admin ID:</strong> XXX</p>
+            </div>
+            <div class="action-buttons">
+                <button id="bookingsBtn">Driver's Bookings <span>&#128276;</span></button>
+                <button id="passwordBtn">Password Settings <span>&#128274;</span></button>
+                <button id="addDriverBtn">Add Driver <span>&#10133;</span></button>
+                <button id="tripsHistoryBtn">Trips History <span>&#8634;</span></button>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <h2>Regional Performance</h2>
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart3"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart4"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // JavaScript for Chart Rendering
+        document.addEventListener("DOMContentLoaded", () => {
+            const data1 = [30, 20, 25, 25];
+            const data2 = [35, 15, 30, 20];
+            const data3 = [20, 40, 15, 25];
+            const data4 = [10, 30, 35, 25];
+
+            const createChart = (ctx, data) => {
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['North', 'South', 'East', 'West'],
+                        datasets: [{
+                            data: data,
+                            backgroundColor: ['#f44336', '#2196f3', '#ffeb3b', '#4caf50'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        },
+                    }
+                });
+            };
+
+            createChart(document.getElementById('chart1').getContext('2d'), data1);
+            createChart(document.getElementById('chart2').getContext('2d'), data2);
+            createChart(document.getElementById('chart3').getContext('2d'), data3);
+            createChart(document.getElementById('chart4').getContext('2d'), data4);
+
+            // Button Interactivity
+            document.getElementById("bookingsBtn").addEventListener("click", () => {
+                alert("Redirecting to Driver's Bookings...");
+            });
+
+            document.getElementById("passwordBtn").addEventListener("click", () => {
+                alert("Redirecting to Password Settings...");
+            });
+
+            document.getElementById("addDriverBtn").addEventListener("click", () => {
+                alert("Redirecting to Add Driver...");
+            });
+
+            document.getElementById("tripsHistoryBtn").addEventListener("click", () => {
+                alert("Redirecting to Trips History...");
+            });
+        });
+    </script>
+</body>
+</html>
